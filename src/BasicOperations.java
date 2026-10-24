@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BasicOperations {
     // Remove duplicate elements from list
@@ -82,9 +83,29 @@ public class BasicOperations {
                 .orElseThrow();
         System.out.println(map);
     }
+    // Merge two unsorted arrays into a single sorted array
+    static void mergeUnsortedArrays(){
+        int[] arrA = {1,2,3,40,5};
+        int[] arrB = {4,7,9,8};
+        int[] mergedArr = IntStream.concat(Arrays.stream(arrA), Arrays.stream(arrB))
+                .sorted().toArray();
+        System.out.println(Arrays.toString(mergedArr));
+    }
+    // merge two unsorted arrays into a single sorted array without duplicates
+    static void mergeUnsortedArrayD(){
+        int[] arrA = {1,3,5,7,5};
+        int[] arrB = {2,4,6,8,7};
+        int[] mergedArr = IntStream.concat(Arrays.stream(arrA), Arrays.stream(arrB))
+                .sorted()
+                .distinct()
+                .toArray();
+        System.out.println(Arrays.toString(mergedArr));
+    }
 
     static void main() {
-        maximumOccurringCharacterInString();
+        mergeUnsortedArrayD();
+//        mergeUnsortedArrays();
+//        maximumOccurringCharacterInString();
 //        sortInReverseOrder();
 //        findDuplicateElements();
 //        sortListElements();
