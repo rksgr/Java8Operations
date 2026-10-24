@@ -2,6 +2,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class BasicOperations {
     // Remove duplicate elements from list
@@ -101,9 +102,53 @@ public class BasicOperations {
                 .toArray();
         System.out.println(Arrays.toString(mergedArr));
     }
-
+    // minimum three numbers in a list
+    static void minThreeNums(){
+        List.of(23,24,12,4,6,46,55)
+                .stream()
+                .sorted()
+                .limit(3)
+                .forEach(System.out::println);
+    }
+    // Maximum three numbers in a list
+    static void maxThreeNums(){
+        List.of(23,35,46,75,83,12,29,77)
+                .stream()
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .forEach(System.out::println);
+    }
+    // To check if two strings are anagrams or not
+    static void checkIfAnagrams(){
+        String s1 = "RaceCar";
+        String s2 = "CarRace1";
+        s1= Stream.of(s1.split(""))
+                .map(String::toUpperCase)
+                .sorted()
+                .collect(Collectors.joining());
+        //Collectors.joining() concatenates all stream elements into a single string
+        s2 = Stream.of(s2.split(""))
+                .map(String::toUpperCase)
+                .sorted()
+                .collect(Collectors.joining());
+        if(s1.equals(s2)){
+            System.out.println("Two strings are anagrams");
+        }else{
+            System.out.println("Two strings are not anagrams.");
+        }
+    }
+// Sum of all the digits of a number
+    static void sumDigits(){
+        int num = 235;
+        int sum = Stream.of(String.valueOf(num).split(""))
+                .collect(Collectors.summingInt(Integer::parseInt));
+        System.out.println(sum);
+    }
     static void main() {
-        mergeUnsortedArrayD();
+        sumDigits();
+//        checkIfAnagrams();
+//        maxThreeNums();
+//        mergeUnsortedArrayD();
 //        mergeUnsortedArrays();
 //        maximumOccurringCharacterInString();
 //        sortInReverseOrder();
