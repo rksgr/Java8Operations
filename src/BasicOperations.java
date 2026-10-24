@@ -62,9 +62,18 @@ public class BasicOperations {
                         .collect(Collectors.toSet());
         System.out.println(dupSet);
     }
+    // sort the elements of a list in reverse order
+    static void sortInReverseOrder(){
+        List<Integer> revSorted = List.of(23,12,11,14,24,25)
+                .stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+        System.out.println(revSorted);
+    }
 
     static void main() {
-        findDuplicateElements();
+        sortInReverseOrder();
+//        findDuplicateElements();
 //        sortListElements();
 //        findMinElement();
 //        findMaxElement();
