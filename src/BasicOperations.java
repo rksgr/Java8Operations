@@ -70,9 +70,22 @@ public class BasicOperations {
                 .collect(Collectors.toList());
         System.out.println(revSorted);
     }
+    static void maximumOccurringCharacterInString(){
+        String str = "Tomorrow is sunday";
+        Map.Entry<Character,Long> map =
+                str.chars()
+                .mapToObj(c -> (char)c)
+                .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow();
+        System.out.println(map);
+    }
 
     static void main() {
-        sortInReverseOrder();
+        maximumOccurringCharacterInString();
+//        sortInReverseOrder();
 //        findDuplicateElements();
 //        sortListElements();
 //        findMinElement();
