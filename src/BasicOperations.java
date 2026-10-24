@@ -45,9 +45,28 @@ public class BasicOperations {
         characterFrequency.forEach((character,frequency)
                 ->System.out.println(""+ character+ ""+ frequency));
     }
+    // sort the elements of a list
+    static void sortListElements(){
+        List.of(23,14,45,23,54,42,20)
+                .stream()
+                .sorted(Comparator.naturalOrder())
+                .forEach(System.out::println);
+    }
+    // find duplicate elements from an array
+    static void findDuplicateElements(){
+        Set<Integer> intSet = new HashSet<>();
+        Set<Integer> dupSet =
+                List.of(23,45,23,34,46,56,34)
+                        .stream()
+                        .filter(num -> !intSet.add(num))
+                        .collect(Collectors.toSet());
+        System.out.println(dupSet);
+    }
 
     static void main() {
-        findMinElement();
+        findDuplicateElements();
+//        sortListElements();
+//        findMinElement();
 //        findMaxElement();
         //freqEachCharacterInString();
     }
