@@ -144,13 +144,34 @@ public class BasicOperations {
                 .collect(Collectors.summingInt(Integer::parseInt));
         System.out.println(sum);
     }
+//   find the second-largest number in an array
+    static void secondLargestNum(){
+        Integer[] numArr={23,34,12,43,48,22};
+        Integer secLargestNum = Arrays.asList(numArr)
+                .stream()
+                .sorted(Comparator.reverseOrder())
+                .skip(1)
+                .findFirst()
+                .get();
+        System.out.println(secLargestNum);
+    }
+    // sort strings according to increasing order of their length
+    static void sortOrderLength(){
+        String[] strArr = {"Java", "Python","c++","Fortran"};
+        Arrays.asList(strArr)
+                .stream()
+                .sorted(Comparator.comparing(String::length))
+                .forEach(System.out::println);
+    }
     static void main() {
-        sumDigits();
+//        sortOrderLength();
+//        secondLargestNum();
+//        sumDigits();
 //        checkIfAnagrams();
-//        maxThreeNums();
+        maxThreeNums();
 //        mergeUnsortedArrayD();
 //        mergeUnsortedArrays();
-//        maximumOccurringCharacterInString();
+        maximumOccurringCharacterInString();
 //        sortInReverseOrder();
 //        findDuplicateElements();
 //        sortListElements();
